@@ -15,7 +15,7 @@ export default function useAuth(code) {
         setAccessToken(res.data.accessToken);
         setRefreshToken(res.data.refreshToken);
         setExpiresIn(res.data.expiresIn);
-        window.history.pushState({}, null, "/dashboard");
+        window.history.pushState({}, null, "/");
       })
       .catch(() => {
         window.location = "/";
@@ -23,9 +23,7 @@ export default function useAuth(code) {
   }, [code]);
 
   useEffect(() => {
-    if (!refreshToken || !expiresIn) {
-      return;
-    }
+    if (!refreshToken || !expiresIn) return;
     const interval = setInterval(() => {
       axios
         .post("http://localhost:3001/refresh", {
@@ -38,7 +36,7 @@ export default function useAuth(code) {
         .catch(() => {
           window.location = "/";
         });
-    }, expiresIn - 60 * 1000);
+    }, (expiresIn - 60) * 1000);
 
     return () => clearInterval(interval);
   }, [refreshToken, expiresIn]);

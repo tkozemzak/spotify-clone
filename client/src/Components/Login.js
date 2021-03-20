@@ -1,11 +1,11 @@
 import React from "react";
-
 import { Container } from "react-bootstrap";
 
-const AUTH_URL =
-  "https://accounts.spotify.com/authorize?client_id=f60fb94836aa403995129fe4340d673f&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 
-const Login = () => {
+const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
+
+export default function Login() {
   return (
     <Container
       className="d-flex justify-content-center align-items-center"
@@ -16,6 +16,4 @@ const Login = () => {
       </a>
     </Container>
   );
-};
-
-export default Login;
+}
