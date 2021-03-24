@@ -38,7 +38,7 @@ const Dashboard = ({ code }) => {
           );
 
           return {
-            artist: track.artists[0],
+            artist: track.artists[0].name,
             title: track.name,
             uri: track.uri,
             albumUrl: smallestAlbumImage.url,
