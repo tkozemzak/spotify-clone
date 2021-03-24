@@ -55,6 +55,7 @@ app.post("/login", (req, res) => {
     .catch((err) => {
       res.sendStatus(400);
     });
+  console.log("Successfully Logged In with ClientID: ", process.env.CLIENT_ID);
 });
 
 app.get("/lyrics", async (req, res) => {
