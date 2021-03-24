@@ -3,6 +3,7 @@ import useAuth from "../Hooks/useAuth";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "./TrackSearchResult";
+import Player from "./Player";
 
 const spotifyApi = new SpotifyWebApi({
   clientId: "b2a4c85d08204823ad65906e7a6a3207",
@@ -13,7 +14,7 @@ const Dashboard = ({ code }) => {
   const [searchResults, setSearchResults] = useState([]);
 
   const accessToken = useAuth(code);
-
+  console.log("accessToken: ", accessToken);
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);
@@ -49,7 +50,6 @@ const Dashboard = ({ code }) => {
     return () => (cancel = true);
   }, [search, accessToken]);
 
-  console.log("CODE: ", code);
   return (
     <Container className="d-flex flex-column py-2" style={{ height: "100vh" }}>
       <Form.Control
@@ -63,7 +63,9 @@ const Dashboard = ({ code }) => {
           return <TrackSearchResult track={track} key={track.uri} />;
         })}
       </div>
-      <div>Bottom</div>
+      <div>
+        <Player accessToken={accessToken} />
+      </div>
     </Container>
   );
 };
