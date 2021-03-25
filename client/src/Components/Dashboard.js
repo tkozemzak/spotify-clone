@@ -12,9 +12,15 @@ const spotifyApi = new SpotifyWebApi({
 const Dashboard = ({ code }) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [playingTrack, setPlayingTrack] = useState();
+
+  const chooseTrack = (track) => {
+    setPlayingTrack(track);
+    setSearch("");
+  };
 
   const accessToken = useAuth(code);
-  console.log("accessToken: ", accessToken);
+
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);
@@ -64,7 +70,7 @@ const Dashboard = ({ code }) => {
         })}
       </div>
       <div>
-        <Player accessToken={accessToken} />
+        <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
       </div>
     </Container>
   );
