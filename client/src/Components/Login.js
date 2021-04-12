@@ -13,6 +13,10 @@ export default function Login({ clientId }) {
       .then((res) => {
         const clientIdRes = res.data;
         console.log("res in useeffect", clientIdRes);
+        localStorage.setItem(
+          "spotify_client_id",
+          process.env.REACT_APP_CLIENT_ID
+        );
         dispatch({ type: "SAVE_ID", payload: clientIdRes });
       });
   }, []);
