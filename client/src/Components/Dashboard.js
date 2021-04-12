@@ -8,14 +8,15 @@ import axios from "axios";
 
 //initialize Spotify API with client ID
 const spotifyApi = new SpotifyWebApi({
-  clientId: "b2a4c85d08204823ad65906e7a6a3207",
+  clientId: process.env.REACT_APP_CLIENT_ID,
 });
 
-const Dashboard = ({ code }) => {
+const Dashboard = ({ code, clientId }) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [playingTrack, setPlayingTrack] = useState();
   const [lyrics, setLyrics] = useState("");
+
   //Set the current track to user selection and reset search field
   const chooseTrack = (track) => {
     setPlayingTrack(track);
@@ -38,7 +39,7 @@ const Dashboard = ({ code }) => {
       .then((res) => {
         setLyrics(res.data.lyrics);
       });
-  }, [playingTrack]);
+  }, [playingTrack, spotifyApi]);
 
   //set the access token in the spotify api. if access token changes, set again
   useEffect(() => {
