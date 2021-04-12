@@ -13,13 +13,31 @@ const Dashboard = ({ code }) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [playingTrack, setPlayingTrack] = useState();
+  const [lyrics, setLyrics] = useState("");
   //Set the current track to user selection and reset search field
   const chooseTrack = (track) => {
     setPlayingTrack(track);
     setSearch("");
+    setLyrics("");
   };
   //pull access token from useAuth custom hook
   const accessToken = useAuth(code);
+
+  useEffect(() => {
+    if (!playingTrack) return;
+
+    axios
+      .get("http://localhost:3001/lyrics", {
+        params: {
+          track: playingTrack.title,
+          artist: playingTrack.artist,
+        },
+      })
+      .then((res) => {
+        setLyrics(res.data.lyrics);
+      });
+  }, [playingTrack]);
+
   //set the access token in the spotify api. if access token changes, set again
   useEffect(() => {
     if (!accessToken) return;
@@ -67,8 +85,19 @@ const Dashboard = ({ code }) => {
       />
       <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
         {searchResults.map((track) => {
-          return <TrackSearchResult track={track} key={track.uri} />;
+          return (
+            <TrackSearchResult
+              track={track}
+              key={track.uri}
+              chooseTrack={chooseTrack}
+            />
+          );
         })}
+        {searchResults.length === 0 && (
+          <div className="text-center" style={{ whiteSpace: "pre" }}>
+            {lyrics}
+          </div>
+        )}
       </div>
       <div>
         <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
