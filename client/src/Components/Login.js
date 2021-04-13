@@ -1,10 +1,9 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Container } from "react-bootstrap";
-import { Context } from "../Contexts/Store";
-import axios from "axios";
+// import { Context } from "../Contexts/Store";
 
 export default function Login({ clientId }) {
-  const [state, dispatch] = useContext(Context);
+  // const [state, dispatch] = useContext(Context);
 
   // useEffect(() => {
   //   //hit keystoreproxyserver for spotify Client ID
