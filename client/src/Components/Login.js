@@ -14,7 +14,7 @@ export default function Login({ clientId }) {
         const clientIdRes = res.data;
         dispatch({ type: "SAVE_ID", payload: clientIdRes });
       });
-  }, []);
+  });
 
   const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${state.clientId}&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
 

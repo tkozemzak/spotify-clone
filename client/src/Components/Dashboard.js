@@ -39,7 +39,7 @@ const Dashboard = ({ code, clientId }) => {
       .then((res) => {
         setLyrics(res.data.lyrics);
       });
-  }, [playingTrack, spotifyApi]);
+  }, [playingTrack]);
 
   //set the access token in the spotify api. if access token changes, set again
   useEffect(() => {
