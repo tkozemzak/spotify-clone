@@ -1,19 +1,9 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { Container } from "react-bootstrap";
 // import { Context } from "../Contexts/Store";
 
 export default function Login({ clientId }) {
-  // const [state, dispatch] = useContext(Context);
-
-  // useEffect(() => {
-  //   //hit keystoreproxyserver for spotify Client ID
-  //   axios
-  //     .get("http://tkozemzak.ddns.net:8000/api/v1/spotify-clone")
-  //     .then((res) => {
-  //       const clientIdRes = res.data;
-  //       dispatch({ type: "SAVE_ID", payload: clientIdRes });
-  //     });
-  // });
+  const [state, dispatch] = useContext(Context);
 
   const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=b2a4c85d08204823ad65906e7a6a3207&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
 
