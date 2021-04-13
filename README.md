@@ -3,6 +3,7 @@ Issues:
 
 1. Need to fix http/https issue from netlify
 2. Fix clientID pull from keystoreserver
+3. Login not contacting heroku server properly
 
 Future:
 
