@@ -12,11 +12,9 @@ export default function Login({ clientId }) {
       className="d-flex justify-content-center align-items-center"
       style={{ minHeight: "100vh" }}
     >
-      {state.clientId && (
-        <a className="btn btn-success btn-lg" href={AUTH_URL}>
-          Login With Spotify
-        </a>
-      )}
+      <a className="btn btn-success btn-lg" href={AUTH_URL}>
+        Login With Spotify
+      </a>
     </Container>
   );
 }

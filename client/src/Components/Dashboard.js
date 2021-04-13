@@ -11,7 +11,7 @@ const spotifyApi = new SpotifyWebApi({
   clientId: "b2a4c85d08204823ad65906e7a6a3207",
 });
 
-const Dashboard = ({ code, clientId }) => {
+const Dashboard = ({ code }) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [playingTrack, setPlayingTrack] = useState();

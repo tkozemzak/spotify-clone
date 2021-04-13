@@ -1,4 +1,10 @@
 To do:
+Issues:
+
+1. Need to fix http/https issue from netlify
+2. Fix clientID pull from keystoreserver
+
+Future:
 
 1. Create playlist/queue feature
 2. Allow skip/rewind
