@@ -1,6 +1,6 @@
-// import { useContext } from "react";
+import { useContext } from "react";
 import { Container } from "react-bootstrap";
-// import { Context } from "../Contexts/Store";
+import { Context } from "../Contexts/Store";
 
 export default function Login({ clientId }) {
   const [state, dispatch] = useContext(Context);
