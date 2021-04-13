@@ -65,6 +65,10 @@ app.get("/lyrics", async (req, res) => {
   res.json({ lyrics });
 });
 
+app.get("/", (req, res) => {
+  res.send("Home /");
+});
+
 app.listen(PORT || 5000, () => {
   console.log("Listening on: ", PORT);
 });
