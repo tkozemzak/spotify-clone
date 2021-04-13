@@ -8,7 +8,7 @@ import axios from "axios";
 
 //initialize Spotify API with client ID
 const spotifyApi = new SpotifyWebApi({
-  clientId: localStorage.getItem("spotify_clone_client_id"),
+  clientId: "b2a4c85d08204823ad65906e7a6a3207",
 });
 
 const Dashboard = ({ code, clientId }) => {
